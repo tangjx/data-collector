@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -31,6 +33,7 @@ public class DataCollectorController {
     public Object logstash(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String,Object> params) {
         logger.debug(params.get("message").toString());
         kafkaService.sendMessage(topic, params.get("message").toString());
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MMM/yyyy:hh:mm:ss Z", Locale.US);
         return "ok";
     }
 

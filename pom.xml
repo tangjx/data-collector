@@ -18,6 +18,34 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+    <repositories>
+        <!--额外配置阿里云的maven仓库，公司内部maven仓库内容少的可怜，记得注释掉setting.xml例的镜像配置-->
+        <repository>
+            <id>aliyunrepository</id>
+            <name>aliyunrepository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
